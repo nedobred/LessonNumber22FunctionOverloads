@@ -1,4 +1,9 @@
-﻿// Написать функцию, которая инициализирует квадратную матрицу 
+﻿// Написать перегруженные функции (int, double, char) для выполнения следующих задач:
+// "инициализация матрицы"
+// "определение максимального и минимального значения на главной диагонали"
+// "вывод матрицы на экран"
+// "сортировка элементов по возрастанию отдельно для каждой строки"
+
 #include <iostream>
 using namespace std;
 
@@ -19,7 +24,6 @@ void InitializingMatrix(int **arr, int &count)
         }
     }
 }
-
 void InitializingMatrix(double **arr, int &count)
 {
 
@@ -34,7 +38,6 @@ void InitializingMatrix(double **arr, int &count)
         }
     }
 }
-
 void InitializingMatrix(char **arr, int &count)
 {
 
@@ -50,6 +53,82 @@ void InitializingMatrix(char **arr, int &count)
     }
 }
 
+
+// перегрузка функции "определение максимального и минимального значения на главной диагонали"
+void MaxMin(int **arr, int &count)
+{
+    int tmp_min = arr[0][0];
+    int tmp_max = arr[0][0];
+
+    for (int i = 0; i < count; i++)
+    {
+        for (int j = 0; j < count; j++)
+        {
+            if (i == j && tmp_min > arr[i][j])
+            {
+                tmp_min = arr[i][j];
+            }
+            if (i == j && tmp_max < arr[i][j])
+            {
+                tmp_max = arr[i][j];
+            }
+        }
+    }
+    cout << "Максимальное значение главной диагонали: "
+        << tmp_max << endl
+        << "Минимальное значение главной диагонали: "
+        << tmp_min << endl;
+}
+void MaxMin(double **arr, int &count)
+{
+    int tmp_min = arr[0][0];
+    int tmp_max = arr[0][0];
+
+    for (int i = 0; i < count; i++)
+    {
+        for (int j = 0; j < count; j++)
+        {
+            if (i == j && tmp_min > arr[i][j])
+            {
+                tmp_min = arr[i][j];
+            }
+            if (i == j && tmp_max < arr[i][j])
+            {
+                tmp_max = arr[i][j];
+            }
+        }
+    }
+    cout << "Максимальное значение главной диагонали: "
+        << tmp_max << endl
+        << "Минимальное значение главной диагонали: "
+        << tmp_min << endl;
+}
+void MaxMin(char **arr, int &count)
+{
+    int tmp_min = arr[0][0];
+    int tmp_max = arr[0][0];
+
+    for (int i = 0; i < count; i++)
+    {
+        for (int j = 0; j < count; j++)
+        {
+            if (i == j && tmp_min > arr[i][j])
+            {
+                tmp_min = arr[i][j];
+            }
+            if (i == j && tmp_max < arr[i][j])
+            {
+                tmp_max = arr[i][j];
+            }
+        }
+    }
+    cout << "Максимальное значение главной диагонали: "
+        << char(tmp_max) << endl
+        << "Минимальное значение главной диагонали: "
+        << char(tmp_min) << endl;
+}
+
+
 // перегрузка функции "вывод матрицы на экран"
 void PrintMatrix(int **arr, int &count)
 {
@@ -64,7 +143,6 @@ void PrintMatrix(int **arr, int &count)
     }
 
 }
-
 void PrintMatrix(double **arr, int &count)
 {
     cout << "\nВот ваша матрица!" << endl;
@@ -78,7 +156,6 @@ void PrintMatrix(double **arr, int &count)
     }
 
 }
-
 void PrintMatrix(char **arr, int &count)
 {
     cout << "\nВот ваша матрица!" << endl;
@@ -93,6 +170,61 @@ void PrintMatrix(char **arr, int &count)
 
 }
 
+
+// перегрузка функции "сортировка элементов по возрастанию отдельно для каждой строки"
+void SortMatrix(int **arr, int &count)
+{
+    cout << "\nПроведена сортировка элементов по возрастанию отдельно для каждой строки!";
+    for (int i = 0; i < count; i++)
+    {
+        for (int j = 0; j < count; j++)
+        {
+            for (int k = count - 1; k > j; k--)
+            {
+                if (arr[i][k - 1] > arr[i][k])
+                {
+                    swap(arr[i][k - 1], arr[i][k]);
+                }
+            }
+        }
+    }
+}
+void SortMatrix(double **arr, int &count)
+{
+    cout << "\nПроведена сортировка элементов по возрастанию отдельно для каждой строки!";
+    for (int i = 0; i < count; i++)
+    {
+        for (int j = 0; j < count; j++)
+        {
+            for (int k = count - 1; k > j; k--)
+            {
+                if (arr[i][k - 1] > arr[i][k])
+                {
+                    swap(arr[i][k - 1], arr[i][k]);
+                }
+            }
+        }
+    }
+}
+void SortMatrix(char **arr, int &count)
+{
+    cout << "\nПроведена сортировка элементов по возрастанию отдельно для каждой строки!";
+    for (int i = 0; i < count; i++)
+    {
+        for (int j = 0; j < count; j++)
+        {
+            for (int k = count - 1; k > j; k--)
+            {
+                if (arr[i][k - 1] > arr[i][k])
+                {
+                    swap(arr[i][k - 1], arr[i][k]);
+                }
+            }
+        }
+    }
+}
+
+
 // перегрузка функции "очистка динамической памяти"
 void ClearMatrix(int **arr, int &count)
 {
@@ -102,7 +234,6 @@ void ClearMatrix(int **arr, int &count)
     }
     delete[] arr;
 }
-
 void ClearMatrix(double **arr, int &count)
 {
     for (int i = 0; i < count; i++)
@@ -111,7 +242,6 @@ void ClearMatrix(double **arr, int &count)
     }
     delete[] arr;
 }
-
 void ClearMatrix(char **arr, int &count)
 {
     for (int i = 0; i < count; i++)
@@ -120,6 +250,8 @@ void ClearMatrix(char **arr, int &count)
     }
     delete[] arr;
 }
+
+
 
 int main()
 {
@@ -135,6 +267,9 @@ int main()
         int **matrix = new int *[MAX];
         InitializingMatrix(*&matrix, MAX);
         PrintMatrix(*&matrix, MAX);
+        MaxMin(*&matrix, MAX);
+        SortMatrix(*&matrix, MAX);
+        PrintMatrix(*&matrix, MAX);
         ClearMatrix(*&matrix, MAX);
     }
     else if (action == 2)   // 2. тип double
@@ -142,12 +277,18 @@ int main()
         double **matrix = new double *[MAX];
         InitializingMatrix(*&matrix, MAX);
         PrintMatrix(*&matrix, MAX);
+        MaxMin(*&matrix, MAX);
+        SortMatrix(*&matrix, MAX);
+        PrintMatrix(*&matrix, MAX);
         ClearMatrix(*&matrix, MAX);
     }
     else if (action == 3)   //3. тип char
     {
         char **matrix = new char *[MAX];
         InitializingMatrix(*&matrix, MAX);
+        PrintMatrix(*&matrix, MAX);
+        MaxMin(*&matrix, MAX);
+        SortMatrix(*&matrix, MAX);
         PrintMatrix(*&matrix, MAX);
         ClearMatrix(*&matrix, MAX);
     }
